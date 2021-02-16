@@ -1,0 +1,59 @@
+<div class="row  d-flex justify-content-center  mt-4">
+    <div class="col-8 shadow rounded p-3">
+        <form autocomplete="off" [formGroup]="formSoci" (ngSubmit)="desar()">
+            <fieldset>
+                <legend class="text-primary border-bottom border-primary" style="border-width: 2px;">{{titol}}<strong>{{titolSoci}}</strong></legend>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="nom">Núm. soci</label>
+                            <input class="form-control" type="number" #myinput formControlName="num_soci" [class.is-invalid]="numSociRepetit">
+                            <small *ngIf="numSociRepetit" class="text-danger">Núm. soci repetit</small>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="nom">D.N.I.</label>
+                            <input class="form-control" type="text" formControlName="dni" [class.is-invalid]="dniRepetit">
+                            <small *ngIf="dniRepetit" class="text-danger">D.N.I. repetit</small>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-group">
+                            <label for="nom">Data neixement</label>
+                            <input class="form-control" type="date" formControlName="data_neixement">
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nom">Nom</label>
+                    <input class="form-control" type="text" formControlName="nom">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input class="form-control" type="email" formControlName="email" [class.is-invalid]="emailIncorrect">
+                    <small *ngIf="emailIncorrect" class="text-danger">Email incorrecte</small>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="nom">Data alta</label>
+                            <input class="form-control" type="date" formControlName="data_alta">
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            <label for="nom">Data baixa</label>
+                            <input class="form-control" type="date" formControlName="data_baixa">
+                        </div>
+                    </div>
+                </div>
+                <small *ngIf="error" class="text-danger">{{ msgError }}</small>
+                <div class="d-flex justify-content-end border-top border-primary pt-2" style="border-width: 2px;">
+                    <button type="submit" class="btn btn-primary mr-2" (click)="tornar()">Tornar</button>
+                    <button type="submit" class="btn btn-success" [disabled]="!formSoci.valid">Desar</button>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</div>
